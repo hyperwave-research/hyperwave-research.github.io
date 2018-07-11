@@ -1,5 +1,5 @@
----
-layout: default 
+--- 
+layout: default
 ---
 <article class="post">
 
@@ -8,12 +8,34 @@ layout: default
     </header>
 
     <div class="post-content">
-        <ul>
-            {% for hyperwave in site.data.hyperwaves %}
-              <li>{{ hyperwave.name }}</a>
-              </li>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Tic</th>
+                <th>Exchange</th>
+                <th>Asset</th>
+                <th>Currency</th>
+                <th>Phase</th>
+                <th>Funky</th>
+            </tr>
+
+            {% for hyperwave in site.hyperwaves %}
+            <tr>
+                <td>
+                    <a href="/hyperwaves/{{ hyperwave.name | escape | downcase }}"> {{ hyperwave.name }}</a>
+                </td>
+                <td>{{ hyperwave.tic }}</td>
+                <td>{{ hyperwave.exchange }}</td>
+                <td>{{ hyperwave.asset }}</td>
+                <td>{{ hyperwave.currency }}</td>
+                <td>{{ hyperwave.current_phase }}</td>
+                <td>{{ hyperwave.is_funky }}</td>
+
+            </tr>
             {% endfor %}
-            </ul>
+
+        </table>
+
     </div>
 
 </article>

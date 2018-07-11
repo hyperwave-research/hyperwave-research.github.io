@@ -1,5 +1,5 @@
 ---
 layout: hyperwaves
-title: hyperwaves
+title: Hyperwaves
 permalink: /hyperwaves/
 ---

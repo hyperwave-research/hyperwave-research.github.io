@@ -1,0 +1,51 @@
+--- 
+layout: default 
+---
+
+<div class="home">
+  {%- if page.title -%}
+  <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  <ul>
+    <li><b>Asset :</b>{{ page.asset }}</li>
+    <li><b>Tic :</b>{{ page.tic }}</li>
+    <li><b>Exchange :</b>{{ page.exchange }}</li>
+    <li><b>Currency :</b>{{ page.currency }}</li>
+    <li><b>Current phase :</b>{{ page.current_phase }}</li>
+    <li><b>Is funky :</b>{{ page.is_funky }}</li>    
+  </ul>
+
+  <p>
+  {%- if page.image_url -%}
+  <img src="{{ page.image_url }}" height="200px">
+  {%- endif -%}
+  <p>
+
+
+  <table>
+    <tr>
+      <th>Phase</th>
+      <th>Price Point 1</th>
+      <th>Date Point 1</th>
+      <th>Price Point 2</th>
+      <th>Date Point 2</th>
+      <th>Is broken</th>
+    </tr>
+    {% for phase in page.phases %}
+    <tr>
+        <td>{{ phase.phase_id }}</td>
+        <td>{{ phase.phase_point_date_1 }}</td>
+        <td>{{ phase.phase_point_price_1 }}</td>
+        {%- if phase.phase_point_date_2 %}
+          <td>{{ phase.phase_point_date_2 }}</td>
+          <td>{{ phase.phase_point_price_2 }}</td>
+        {% else %} 
+          <td></td>
+          <td></td>
+        {%- endif -%}
+        <td>{{ phase.is_broken }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
